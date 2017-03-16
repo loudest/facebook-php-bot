@@ -13,18 +13,12 @@ We made use of:
 
 ## How to send back to the Facebook Messenger API
 
-if(($state['state'] == 'init' or $state['state'] == 'started') and strstr($command,',')) {
-        $state['state'] = 'date';
-        $state['location'] = $command;
-        $redis->set('hnn-bot-'.$message['sender']['id'],json_encode($state));
-        $text = $text_array['date'];
-        if($debug) {
-            echo $text;
-        } else {
-            $bot->send(new SenderActions($message['sender']['id'], 'typing_on'));
-            sleep(1.5);            
-            $bot->send(new Message($message['sender']['id'], $text));    
-        }        
-}
+The following will send a simulating typing back to the Messenger chat as an indicator for response processing
+$bot->send(new SenderActions($message['sender']['id'], 'typing_on'));
 
-Our code is licensed under the [MIT License](LICENSE.md).
+The following is a response generated from using a contextual look-up of an array of cities searched from the chat input.
+$bot->send(structure_element_buttons($message, $cities));
+
+## License
+
+The code is licensed under the [MIT License](LICENSE.md).
