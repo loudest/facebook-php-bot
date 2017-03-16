@@ -13,11 +13,13 @@ We made use of:
 
 ## How to send back to the Facebook Messenger API
 
-The following will send a simulating typing back to the Messenger chat as an indicator for response processing
-$bot->send(new SenderActions($message['sender']['id'], 'typing_on'));
+The following will send a simulating typing back to the Messenger chat as an indicator for response processing.
+
+  $bot->send(new SenderActions($message['sender']['id'], 'typing_on'));
 
 The following is a response generated from using a contextual look-up of an array of cities searched from the chat input.
-$bot->send(structure_element_buttons($message, $cities));
+
+  $bot->send(structure_element_buttons($message, $cities));
 
 ## License
 
